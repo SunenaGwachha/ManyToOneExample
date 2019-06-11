@@ -1,0 +1,140 @@
+<!DOCTYPE html >
+<html layout:decorator="shared/homelayout"
+	xmlns:th="http://www.thymeleaf.org">
+	
+	
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="author" content="O. Kalu">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    <title>Sunena's eLibrary - a demo spring boot webapp</title>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a style="padding-right: 2em;" class="navbar-brand" href="/studentFacultyAdvisor/home">Student Info</a>
+        <!--<span style="color: #ffffff;"> &nbsp; | &nbsp;</span>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+            
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+               
+                    <a class="nav-link" href="/students">Student List</a> 
+                 
+                    
+              
+           
+            
+	<th:block layout:fragment="header">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/bookedit.css}" />
+	</th:block>
+	                
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <!--<input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+                <!--<a style="color: #ffffff; margin-right: 0em;" class="nav-link" href="#">John Doe</a>-->
+                <!--<a href="#" class="btn btn-secondary">Sign In</a>-->
+            </form>
+        </div>
+    </nav>
+	
+
+	
+	<th:block layout:fragment="content">
+			
+	
+		<form class="form-horizontal" action="/student" method="POST" th:object="${student}">
+		      <input type="hidden" name="ID" th:value="${student.studentId}" />
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="studentId"><b>Student ID:</b></label>
+		     <label th:if="${#fields.hasErrors('studentId')}" th:errors="*{studentId}"
+									class="validation-message"></label>
+		    <div class="col-sm-10"> 
+		      <input type="text" class="form-control" id="studentId" name="studentId"  th:field="*{studentId}">
+		    </div>
+		  </div>
+		  
+		  
+		   <div class="form-group">
+		    <label class="control-label col-sm-2" for="studentNumber"><b>Student Number:</b></label>
+		     <label th:if="${#fields.hasErrors('studentNumber')}" th:errors="*{studentNumber}"
+									class="validation-message"></label>
+		    <div class="col-sm-10"> 
+		      <input type="text" class="form-control" id="studentNumber" name="studentNumber"  th:value="${student.studentNumber}">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="name"><b>Name:</b></label>
+		     <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+									class="validation-message"></label>
+		    <div class="col-sm-10"> 
+		      <input type="text" class="form-control" id="name" name="name"  th:value="${student.name}">
+		    </div>
+		  </div>
+		  
+		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="cgpa"><b>CGPA:</b></label>
+		     <label th:if="${#fields.hasErrors('cgpa')}" th:errors="*{cgpa}"
+									class="validation-message"></label>
+									
+		    <div class="col-sm-10">
+		      <input type="cgpa" class="form-control" id="cgpa" name="cgpa"  th:value="${student.cgpa}">
+		    </div>
+		  </div>
+		  
+		  
+		  
+		  
+		   <div class="form-group">
+		    <label class="control-label col-sm-2" for="admissionDate"><b>Admission Date:</b></label>
+		     <label th:if="${#fields.hasErrors('admissionDate')}" th:errors="*{admissionDate}"
+									class="validation-message"></label>
+									
+		    <div class="col-sm-10">
+		      <input type="admissionDate" class="form-control" id="admissionDate" name="admissionDate"  th:value="${student.admissionDate}">
+		    </div>
+		  </div>
+		  
+		  
+		  
+		  
+		     <div class="form-group">
+		    <label class="control-label col-sm-2" for="facultyadvisor"><b>Faculty Advisor:</b></label>
+		    
+									
+		    <div class="col-sm-10">
+		      <input type="facultyadvisor" class="form-control" id="facultyadvisor" name="facultyadvisor"  th:value="${student.facultyadvisor}">
+		    </div>
+		  </div>
+		  
+		  
+		  
+		  
+		  <div class="form-group"> 
+		    <div class="col-sm-offset-2 col-sm-10">
+		      <button type="submit" class="btn btn-default"><b>Submit</b></button>
+		    </div>
+		  </div>
+		</form>
+		<br/>
+		
+		
+	</th:block>
+	
+	<th:block layout:fragment="footer">
+	</th:block>
+	
+</body>
+</html>
